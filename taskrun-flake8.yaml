@@ -1,0 +1,25 @@
+apiVersion: tekton.dev/v1alpha1
+kind: TaskRun
+metadata:
+  name: taskrun-flake8
+spec:
+  inputs:
+    resources:
+    - name: gitspace
+      resourceRef:
+        name: git-demo-tekton
+  taskRef:
+    name: flake8
+---
+apiVersion: tekton.dev/v1alpha1
+kind: TaskRun
+metadata:
+  name: taskrun-flake8-with-error
+spec:
+  inputs:
+    resources:
+    - name: gitspace
+      resourceRef:
+        name: git-demo-tekton-error
+  taskRef:
+    name: flake8
