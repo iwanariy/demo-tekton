@@ -1,0 +1,18 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: flake8
+spec:
+  inputs:
+    resources:
+    - name: gitspace
+      type: git
+  steps:
+    - name: tree-for-debug
+      image: iankoulski/tree
+      command: ["tree"]
+      args: ["."]
+    - name: flake8
+      image: alpine/flake8
+      command: ["flake8"]
+      args: ["."]
