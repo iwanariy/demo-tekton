@@ -1,0 +1,23 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: git-demo-tekton
+spec:
+  type: git
+  params:
+    - name: revision
+      value: master
+    - name: url
+      value: https://github.com/iwanariy/demo-tekton
+---
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: git-demo-tekton-error
+spec:
+  type: git
+  params:
+    - name: revision
+      value: with-error
+    - name: url
+      value: https://github.com/iwanariy/demo-tekton
